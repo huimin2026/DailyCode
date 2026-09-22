@@ -1,33 +1,34 @@
-package controllerloop;
-
-import java.util.Random;
-import java.util.Scanner;
+package looploop;
 
 public class Test2 {
     public static void main(String[] args) {
-        /*生成一个1~100之间的随机数，利用键盘录入模拟猜的动作，一直猜对为止*/
+        /*
+       打印正三角形
+        *
+        **
+        ***
+        ****
+        *****
+        打印倒三角形
+        *****
+        ****
+        ***
+        **
+        *
 
-        //1.生成一个1~100之间的随机数
-        Random r = new Random();
-        int number = r.nextInt(1,10);
-        System.out.println();
+        限定：每次只能输出一个*
+        */
 
-        while(true){
-            //2.键盘录入模拟猜的动作
-            Scanner sc = new Scanner(System.in);
-            System.out.println("请输入你的猜测：");
-            int guessNumber = sc.nextInt();
+        //打印正三角形的第一行
 
-            //3.比较
-            if(guessNumber > number){
-                System.out.println("猜大了");
-            }else if(guessNumber < number){
-                System.out.println("猜小了");
-            }else{
-                System.out.println("猜对了");
-                break;
+        //外循环：把在一行打印N个星的事情，重复五次
+        for(int i = 1;i<=5;i++){
+            //内循环：在一行打印1~5个星
+            for (int j=1;j<=i;j++){
+                System.out.print("*");
             }
+            System.out.println();
         }
-
     }
+
 }
