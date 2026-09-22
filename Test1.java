@@ -1,22 +1,28 @@
-package controllerloop;
-
-import java.util.Random;
+package looploop;
 
 public class Test1 {
-    public static void main(String[] args) {
-       /*生成一个1~100之间的随机数，利用键盘录入模拟猜的动作，一直猜对为止*/
+    public static void main(String[] args){
+        /*打印4行5列的
+        *****
+        *****
+        *****
+        *****
+        限定：每次只能输出一个*
+        */
 
-        //1.找到Random这个类
-        Random r = new Random();
+        //*****
+        //System.out.println("*"）;先打印，再换行
+        //System.out.print("*");只打印，不换行
 
-        //2.生成一个随机数
-        //（了解）第一种写法：int n = r.nextInt();  默认是在int的取值范围之内获取随机数
-        //（重要）第二种写法：小括号写一个数字n,表示随机的最大值，但是不包含这个数字
-        //（重要）第三种写法：小括号写两个数字a b ，表示随机的取值范围是a ~ b ，包含a,不包含b
-
-        for(int i = 0;i<100 ; i++){
-            int n = r.nextInt(1,10);
-            System.out.println(n);
+        //外循环
+        // 作用：就是把在一行打印5个星的事情，重复执行4次
+        for (int i = 1;i<=4;i++) {
+            //再一行打印5个*
+            for (int j = 1; j<=5 ; j++){
+                System.out.print("*");
+            }
+            //换行
+            System.out.println();
         }
     }
 }
