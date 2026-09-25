@@ -1,28 +1,53 @@
-package looploop;
+package array;
+
+import java.util.Scanner;
 
 public class Test1 {
-    public static void main(String[] args){
-        /*打印4行5列的
-        *****
-        *****
-        *****
-        *****
-        限定：每次只能输出一个*
-        */
+    public static void main(String[] args) {
+        /*需求：已知数组元素为 {33,5,22,44,55,33}
+键盘录入任意一个数据，查找这个数据在数组中是否存在
+如果数组中要查找的数据出现多次，只要显示第一次的索引即可
 
-        //*****
-        //System.out.println("*"）;先打印，再换行
-        //System.out.print("*");只打印，不换行
+输出要求：
+如果存在打印索引
+如果不存在，提示：“该数据不存在”
 
-        //外循环
-        // 作用：就是把在一行打印5个星的事情，重复执行4次
-        for (int i = 1;i<=4;i++) {
-            //再一行打印5个*
-            for (int j = 1; j<=5 ; j++){
-                System.out.print("*");
+细节：
+细节一：什么情况下，才能断定数据在数组中不存在
+细节二：两种写法 flag(标记)  count(计数器)*/
+
+        //1.定义数组
+        int[] arr = {33,5,22,44,55,33};
+
+        //2.键盘录入任意一个数据
+        Scanner sc = new Scanner(System.in);
+        System.out.print("请录入一个整数：");
+        int number = sc.nextInt();
+
+        //作用：记录数组当中是否存在number  false:不存在  true:存在
+        //boolean flag = false;
+
+        //作用：统计number在数组中出现多少次
+        int count = 0;
+
+        //3.拿着number跟数组里面每一个元素————比较
+        for (int i=0;i<arr.length;i++){
+            //i:索引  arr[i]:元素/数据
+            if(number == arr[i]){
+                System.out.println(i);
+                count++;
+                //flag = true;
+                //如果找到了，循环直接结束，后面的数据不用再比较了
+                break;
             }
-            //换行
-            System.out.println();
+        }
+        //判断
+        /*if(!flag){
+            System.out.println("该数据不存在");
+        }*/
+
+        if(count == 0){
+            System.out.println("该数据不存在");
         }
     }
 }
