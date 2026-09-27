@@ -1,32 +1,40 @@
-package looploop;
+package array;
+
+import java.util.Random;
 
 public class Test6 {
     public static void main(String[] args) {
+        /*需求：获取10个1~100之间的随机数并存入到数组当中，要求保证数据是唯一的
+        核心思路：
+             如果存在，就不存，继续生成下一个随机数
+             如果不存在，就存入到数组当中
+             */
 
-    /*
-    打印梯形
-      ##***
-      #*****
-      *******
-    */
-        for(int i=1;i<=3;i++){
-           //先打印第一部分
-            for(int j =i;j<=2;j++){
-                System.out.print(" ");
+        //1.创建数组
+        int[] arr = new int[10];
+        //2.生成随机数
+        Random r = new Random();
+        for(int i = 0;i<arr.length;){
+            int num = r.nextInt(100)+1;
+            //对num进行判断，存在--不存 不存在---存在
+            int count = 0;
+            for(int j=0;j<arr.length;j++){
+                if(num == arr[j]){
+                    count++;
+                    break;
+                }
             }
-            //再打印第二部分
-            for(int j = 1;j<=i;j++){
-                System.out.print("*");
+            //对count进行判断
+            if(count == 0){
+                arr[i] = num;
+                //只生成一个满足要求的随机数，索引才会自增
+                i++;
             }
-            //再打印第三部分
-            for(int j = 1;j<=2;j++){
-                System.out.print("*");
-            }
-            //再打印第四部分
-            for(int j = 1;j<=i-1;j++){
-                System.out.print("*");
-            }
-            System.out.println();
         }
+        //3.遍历
+        for(int i = 0;i<arr.length;i++){
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
     }
 }
