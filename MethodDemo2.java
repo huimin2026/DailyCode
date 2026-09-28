@@ -1,0 +1,48 @@
+package method;
+
+import java.util.Random;
+
+public class MethodDemo2 {
+    public static void main(String[] args) {
+         /*需求：获取10个1~100之间的随机数并存入到数组当中，要求保证数据是唯一的
+        核心思路：
+             如果存在，就不存，继续生成下一个随机数
+             如果不存在，就存入到数组当中
+             */
+
+        //1.创建数组
+        int[] arr = new int[10];
+        //2.生成随机数
+        Random r = new Random();
+        for (int i = 0; i < arr.length; ) {
+            int num = r.nextInt(100) + 1;
+            //对num进行判断，存在--不存 不存在---存在
+            boolean flag = contains(num, arr);
+            //对count进行判断
+            if (!flag) {
+                arr[i] = num;
+                //只生成一个满足要求的随机数，索引才会自增
+                i++;
+            }
+        }
+        //3.遍历
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+
+    }
+
+    //定义一个方法，判断num在数组arr中是否存在
+    public static boolean contains(int num, int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            //如果遇到一个符合条件的，直接返回true
+            //此时方法直接结束
+            if (num == arr[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+}
