@@ -1,34 +1,73 @@
-package array;
+package method;
+
+import java.util.Scanner;
 
 public class Test2 {
-    public static void main(String[] args){
-        /*
-        需求：已知数组元素为{33，5，22，44，55}
-        请找出数组中最大值并打印在控制台
+    public static void main(String[] args) {
+        /*作业2：计算班级分数
+班主任需要统计10名学生的数学成绩（0-100分），计算及格率，平均分，并找出最高分。
+要求1：键盘录入10名学生的成绩，存入数组。超出范围，提示“成绩无效，请重新输入”。
+要求2：定义方法，求及格人数，根据及格人数，求及格率。
+要求3：定义方法求总分，根据总分求平均分
+要求4：定义方法求最大值。*/
 
-        细节1：
-             循环的开始条件，如果为0.请问：对结果有没有影响
-             对结果没有任何影响，只不过，循环多执行一次
+        Scanner sc = new Scanner(System.in);
+        //创建数组，存10个学生成绩
+        int[] scoreArr = new int[10];
+        int index = 0;
 
-         细节2：
-              max的初始化值，能不能赋值为0？
-              max的初始化值，不能赋值为0
-              max记录的值，一定要是数组里面的元素*/
+        //录入10个成绩，非法就重输
+        while(index<scoreArr.length){
+            System.out.println("请输入第" + (index + 1) + "个学生的成绩：");
+            int score = sc.nextInt();
+            if(score >= 0&&score<=100){
+                scoreArr[index] = score;
+                index++;
+            }else{
+                System.out.println("成绩无效，请重新输入");
+            }
+        }
 
-        //1.创建数组
-        int[] arr = {33,5,22,44,55};
+        //调用各个方法
+        int passCount = getPassCount(scoreArr);//及格人数
+        int sum = getSum(scoreArr);//总分
+        int max = getMax(scoreArr);//最高分
 
-        //2.定义一个变量（擂台），默认记录第一个值
+        double passRate = passCount / 10.0;//及格率
+        double avg = sum / 10.0;//平均分
+
+        System.out.println("及格人数：" + passCount);
+        System.out.println("及格率：" + passRate);
+        System.out.println("总分：" + sum);
+        System.out.println("平均分：" + avg);
+        System.out.println("最高分：" + max);
+    }
+    //方法：求及格人数（>=60算及格）
+    public static int getPassCount(int[] arr){
+        int count = 0;
+        for(int num : arr){
+            if(num >= 60){
+                count++;
+            }
+        }
+        return count;
+    }
+    //方法：求总分
+    public static int getSum(int[] arr){
+        int sum = 0;
+        for(int num : arr){
+            sum += num;
+        }
+        return sum;
+    }
+    //方法：求最大值
+    public static int getMax(int[] arr){
         int max = arr[0];
-
-        //3.让后面的人依次跟擂台的人比较一下
-        for(int i= 1;i <arr.length;i++){
-            //判断
-            if(max < arr[i]){
+        for(int i = 1; i < arr.length; i++){
+            if(arr[i] > max){
                 max = arr[i];
             }
         }
-        //4.输出
-        System.out.println(max);
+        return max;
     }
 }
