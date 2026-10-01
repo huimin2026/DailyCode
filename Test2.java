@@ -1,73 +1,47 @@
-package method;
+package test;
 
-import java.util.Scanner;
+import java.util.Random;
 
 public class Test2 {
     public static void main(String[] args) {
-        /*作业2：计算班级分数
-班主任需要统计10名学生的数学成绩（0-100分），计算及格率，平均分，并找出最高分。
-要求1：键盘录入10名学生的成绩，存入数组。超出范围，提示“成绩无效，请重新输入”。
-要求2：定义方法，求及格人数，根据及格人数，求及格率。
-要求3：定义方法求总分，根据总分求平均分
-要求4：定义方法求最大值。*/
+        /*输入两个整数M、N，M代表红包的总额，N代表红包的个数。
+现在有N个人来抽红包，每个人都是随机的，打印每个人领的红包金额。
+要求：
 
-        Scanner sc = new Scanner(System.in);
-        //创建数组，存10个学生成绩
-        int[] scoreArr = new int[10];
-        int index = 0;
+1. 每个人最少1分钱
 
-        //录入10个成绩，非法就重输
-        while(index<scoreArr.length){
-            System.out.println("请输入第" + (index + 1) + "个学生的成绩：");
-            int score = sc.nextInt();
-            if(score >= 0&&score<=100){
-                scoreArr[index] = score;
-                index++;
-            }else{
-                System.out.println("成绩无效，请重新输入");
+2. 每个人领完红包之后，至少预留 1 * N 分钱
+
+3. 最后一个人拿剩余的总额*/
+        //1.定义变量表示红包
+        int money = 20000;//分
+
+        //2.定义变量表示红包的个数
+        int n = 5;
+
+        //判断红包的金额要足够
+        if(money < n){
+            System.out.println("红包金额不够");
+        }else{
+            //3.利用循环抽取红包
+            Random r = new Random();
+            for(int i =1; i < n; i++){
+                //利用Random进行随机抽取    1 2 3 4 表示当前是第几个人抽取
+                //                       4 3 2 1 表示最少预留的钱，单位分
+                //                       money - (n - i)
+                //                     第一个抽取红包：20000-（5-1）
+
+                //money - （n - i）：目的为了给后面的人预留至少一分钱
+                //+1：目前保证自己最少抽取一分钱
+                int myMoney = r.nextInt(money - (n - i)) + 1;
+
+                //从总额中减去当前抽到的钱
+                money = money - myMoney;
+
+                System.out.println("第" + i + "个人抽到的钱是：" + myMoney + "分");
             }
+            //4.输出最后一个人抽到的钱
+            System.out.println("第" + n + "个人抽到的钱是：" + money + "分");
         }
-
-        //调用各个方法
-        int passCount = getPassCount(scoreArr);//及格人数
-        int sum = getSum(scoreArr);//总分
-        int max = getMax(scoreArr);//最高分
-
-        double passRate = passCount / 10.0;//及格率
-        double avg = sum / 10.0;//平均分
-
-        System.out.println("及格人数：" + passCount);
-        System.out.println("及格率：" + passRate);
-        System.out.println("总分：" + sum);
-        System.out.println("平均分：" + avg);
-        System.out.println("最高分：" + max);
-    }
-    //方法：求及格人数（>=60算及格）
-    public static int getPassCount(int[] arr){
-        int count = 0;
-        for(int num : arr){
-            if(num >= 60){
-                count++;
-            }
-        }
-        return count;
-    }
-    //方法：求总分
-    public static int getSum(int[] arr){
-        int sum = 0;
-        for(int num : arr){
-            sum += num;
-        }
-        return sum;
-    }
-    //方法：求最大值
-    public static int getMax(int[] arr){
-        int max = arr[0];
-        for(int i = 1; i < arr.length; i++){
-            if(arr[i] > max){
-                max = arr[i];
-            }
-        }
-        return max;
     }
 }
