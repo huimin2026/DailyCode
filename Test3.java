@@ -1,51 +1,67 @@
-package method;
-
-import java.util.Scanner;
+package test;
 
 public class Test3 {
     public static void main(String[] args) {
-       /*作业3：计算快递邮费
-某快递公司的运费规则如下（首重1kg，超出部分按kg计算，不足1kg按1kg算）：
-首重1kg：10元；
-超出1-5kg：每kg加2元；
-超出5kg以上：每kg加1.5元。
-键盘录入小数，表示用户快递的重量，计算最终的结果
-要求1：快递重量必须大于0，否则重新输入
-要求2：不同价位的计算，单独定义一个方法*/
+        /*给定两个正序数组 arr1 和 arr2，请先合并数组，并找出合并之后数组的中位数。
+举例：
+数组 1 2 3 4 5 6 7 8 9，中位数：5
+数组 1 2 3 4 5 6，中位数：(3 + 4) / 2*/
+        //定义两个已经从小到大排好序的数组
+        int[] arr1 = {1,3,5,7};
+        int[] arr2 = {2,4,6,8};
 
-        Scanner sc = new Scanner(System.in);
-        double weight;
-        //输入重量，<=0则重新输入
-        while(true){
-            System.out.print("请输入快递重量(kg)：");
-            weight = sc.nextDouble();
-            if(weight > 0){
-                break;//合法跳出循环
-            }else{
-                System.out.println("输入的重量有误，请重新输入。");
-            }
-        }
+        //调用方法合并两个有序数组
+        int[] newArr = merge(arr1, arr2);
+        //调用方法求中位数
+        double median = getMedian(newArr);
 
-        //调用计算运费的方法
-        double money = calculateCost(weight);
-        System.out.println("快递的运费为：" + money + "元");
+        System.out.println("合并后的数组：" + newArr);
+        System.out.println("中位数：" + median);
     }
 
-    //单独定义方法：计算快递邮费
-    public static double calculateCost(double w){
-        //不足1kg按1kg计算，向上取整
-        int kg = (int)Math.ceil(w);
-        double price;
-        if(kg <= 1){
-            //首重1kg：10元
-            price = 10;
-        }else if(kg <= 5){
-            //超出1-5kg：每kg加2元
-            price = 10 + (kg - 1) * 2;
-        }else{
-            //超出5kg以上：每kg加1.5元
-            price = 10 + 4 * 2 + (kg - 5) * 1.5;
+    //方法：合并两个有序数组，返回合并后的有序数组
+    public static int[] merge(int[] arr1, int[] arr2){
+        //新建数组，长度等于两个数组长度相加
+        int[] res = new int[arr1.length + arr2.length];
+        //i指向arr1，j指向arr2，k指向新数组
+        int i = 0,j = 0,k = 0;
+
+        //两个数组都还有元素没取完时的循环
+        while(i < arr1.length && j < arr2.length){
+            //谁小把谁放进新数组，然后对应下标+1
+            if(arr1[i] < arr2[j]){
+                res[k] = arr1[i];
+                i++;
+            }else{
+                res[k] = arr2[j];
+                j++;
+            }
+            k++;
         }
-        return price;
+        //arr1还有剩下的元素，直接全部放进新数组
+        while(i < arr1.length){
+            res[k] = arr1[i];
+            i++;
+            k++;
+        }
+        //arr2还有剩下的元素，直接全部放进新数组
+        while(j < arr2.length){
+            res[k] = arr2[j];
+            j++;
+            k++;
+        }
+        return res;
+    }
+
+    //方法：传入数组，计算中位数
+    public static double getMedian(int[] arr){
+        int len = arr.length;
+        //数组长度是奇数：中位数就是中间那一个数
+        if(len % 2 == 1){
+            return arr[len / 2];
+        }else{
+            //数组长度偶数：中间两个数相加除以2
+            return (arr[len / 2 - 1] + arr[len / 2]) / 2.0;
+        }
     }
 }
