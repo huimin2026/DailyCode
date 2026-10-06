@@ -1,20 +1,16 @@
-package com.itheima.ooptest4;
+package com.itheima.ooptest5;
 
 public class Test {
     public static void main(String[] args) {
-       //创建老师的对象
-        Teacher t= new Teacher();
+        Cook c = new Cook();
+       c.age = 25;
+       c.cookLeve1 = "一级";
+       c.name = "张三";
 
-        //赋值
-        t.age = 30;
-        t.name = "张老师";
+       //获取厨师的属性值并打印在控制台
+        System.out.println("厨师的名字是：" + c.name + ",年龄是：" + c.age + ",烹饪水平是：" + c.cookLeve1);
 
-        //获取老师的信息
-        System.out.println("老师的名字是：" + t.name + ",年龄是：" + t.age);
-
-        //相当于让老师去干活
-        t.eat();
-        t.sleep();
-        t.teach();
+        //让厨师对象去烹饪
+        c.cooking();
     }
 }
