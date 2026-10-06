@@ -1,31 +1,25 @@
-package com.itheima.ooptest1;
+package com.itheima.ooptest2;
 
 public class Test {
     public static void main(String[] args) {
-        //创建对象：记录第一只小狗的信息
-        //格式：
-        //     类名  对象名 = new 类名（）；
+        //创建对象记录第一个学生的信息
+        Student s1 = new Student();
+        s1.name = "张三";
+        s1.gender = '男';
+        s1.age = 18;
+        s1.height = 175.5;
 
-        //创建了一个对象，管理第一只小狗信息
-        Dog d1 = new Dog();
+        //获取学生的信息
+        System.out.println("学生的信息是：" + s1.name + "," + s1.gender + "," + s1.age + "," + s1.height);
 
-        //赋值
-        d1.name = "小白";
-        d1.age = 2;
-        d1.weight = 3.5;
-        d1.color = "白色";
+        //创建对象记录第二个学生的信息
+        Student s2 = new Student();
+        s2.name = "李四";
+        s2.gender = '女';
+        s2.age = 19;
+        s2.height = 165.5;
 
-        //获取第一只小狗的信息
-        System.out.println("第一只小狗的名字是：" + d1.name + ",年龄是：" + d1.age + ",体重是：" + d1.weight + ",颜色是：" + d1.color);
-
-        //创建第二个对象，管理第二只小狗的信息
-        Dog d2 = new Dog();
-        d2.name = "小黑";
-        d2.age = 1;
-        d2.weight = 2.5;
-        d2.color = "黑色";
-
-        //获取第二只小狗的信息
-        System.out.println("第二只小狗的名字是：" + d2.name + ",年龄是：" + d2.age + ",体重是：" + d2.weight + ",颜色是：" + d2.color);
+        //获取学生的信息
+        System.out.println("学生的信息是：" + s2.name + "," + s2.gender + "," + s2.age + "," + s2.height);
     }
 }
