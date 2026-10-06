@@ -1,22 +1,31 @@
-package com.itheima.test;
-
-import java.util.Scanner;
+package com.itheima.ooptest1;
 
 public class Test {
-    void main(){
-        //1.生成一个7位的随机数表示彩票号码
-        int num = 1000000 + (int)(Math.random()*9000000);
-        //2.键盘录入一个7位数表示用户购买的彩票
-        Scanner sc = new Scanner(System.in);
-        System.out.println("请输入7位数彩票号码：");
-        int inputNum = sc.nextInt();
-        //3.判断用户输入的彩票号码和系统生成的彩票号码一致
-        if(num == inputNum){
-            System.out.println("中奖了");
-        }else{
-            System.out.println("未中奖");
-        }
-        System.out.println("系统生成的彩票号码是："+num);
-        System.out.println("用户输入的彩票号码是："+inputNum);
+    public static void main(String[] args) {
+        //创建对象：记录第一只小狗的信息
+        //格式：
+        //     类名  对象名 = new 类名（）；
+
+        //创建了一个对象，管理第一只小狗信息
+        Dog d1 = new Dog();
+
+        //赋值
+        d1.name = "小白";
+        d1.age = 2;
+        d1.weight = 3.5;
+        d1.color = "白色";
+
+        //获取第一只小狗的信息
+        System.out.println("第一只小狗的名字是：" + d1.name + ",年龄是：" + d1.age + ",体重是：" + d1.weight + ",颜色是：" + d1.color);
+
+        //创建第二个对象，管理第二只小狗的信息
+        Dog d2 = new Dog();
+        d2.name = "小黑";
+        d2.age = 1;
+        d2.weight = 2.5;
+        d2.color = "黑色";
+
+        //获取第二只小狗的信息
+        System.out.println("第二只小狗的名字是：" + d2.name + ",年龄是：" + d2.age + ",体重是：" + d2.weight + ",颜色是：" + d2.color);
     }
 }
