@@ -1,14 +1,20 @@
-package com.itheima.ooptest3;
+package com.itheima.ooptest4;
 
 public class Test {
     public static void main(String[] args) {
-        //创建手机对象
-        Phone p = new Phone();
-        //给属性赋值
-        p.brand = "华为";
-        p.color = "黑色";
-        p.price = 3999.99;
-        //输出属性的值
-        System.out.println("手机的品牌是：" + p.brand + ",颜色是：" + p.color + ",价格是：" + p.price);
+       //创建老师的对象
+        Teacher t= new Teacher();
+
+        //赋值
+        t.age = 30;
+        t.name = "张老师";
+
+        //获取老师的信息
+        System.out.println("老师的名字是：" + t.name + ",年龄是：" + t.age);
+
+        //相当于让老师去干活
+        t.eat();
+        t.sleep();
+        t.teach();
     }
 }
