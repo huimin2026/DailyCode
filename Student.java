@@ -1,14 +1,38 @@
-package com.itheima.ooptest9;
+package com.itheima.ooptest10;
 
 public class Student {
+    private String name;
     private int age;
+    private int height;
+    private int weight;
 
-    public void setAge(){
-        //int age = 10;
-        //触发就近原则
-        System.out.println(age);
-
-        //使用了上面成员变量age
-        System.out.println(this.age);
+    public void setName(String name){
+        this.name = name;
     }
+    public String getName(){
+        return name;
+    }
+    public void setAge(int age){
+        this.age = age;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setHeight(int height){
+        this.height = height;
+    }
+    public int getHeight(){
+        return height;
+    }
+    public void setWeight(int weight){
+        this.weight = weight;
+    }
+    public int getWeight(){
+        return weight;
+    }
+
+    //学习方法
+    public void study(){
+        System.out.println("努力学习");
+}
 }
