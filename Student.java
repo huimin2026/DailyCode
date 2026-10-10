@@ -1,34 +1,26 @@
-package com.itheima.ooptest11;
+package com.itheima.ooptest12;
 
 public class Student {
-    //属性：姓名 年龄 性别 身高
     private String name;
     private int age;
-    private String gender;
-    private int height;
 
-    //构造方法
-    //习惯：空参
+    //alt+(Fn)+insert
     public Student(){
 
     }
 
-    //带全部参数的构造方法
-    public Student(String name,int age,String gender,int height){
+    public Student(String name, int age){
         this.name = name;
         this.age = age;
-        this.gender = gender;
-        this.height = height;
     }
 
-    //get set方法
+    //set/get
     public String getName(){
-        return  name;
+        return name;
     }
     public void setName(String name){
         this.name = name;
     }
-
     public int getAge(){
         return age;
     }
@@ -36,17 +28,14 @@ public class Student {
         this.age = age;
     }
 
-    public String getGender(){
-        return gender;
+    //行为：学习 吃饭 睡觉
+    public void study(){
+        System.out.println("学习");
     }
-    public void setGender(String gender){
-        this.gender = gender;
+    public void sleep(){
+        System.out.println("睡觉");
     }
-
-    public int getHeight(){
-        return height;
-    }
-    public void setHeight(int height){
-        this.height = height;
+    public void eat(){
+        System.out.println("吃饭");
     }
 }
