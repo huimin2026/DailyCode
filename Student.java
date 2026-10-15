@@ -1,10 +1,12 @@
-package com.itheima.staticvariabletest1;
+package com.itheima.oopextendstest1;
 
-public class Student {
+public class Student extends Person {
+    //特有的内容
+    //属性：年纪
+    String grade;
 
-    String name;//姓名
-    int age;//年龄
-
-    //一个的学生共享一个老师
-    static String teacherName;//老师姓名
+    //行为：学习
+    public void studt(){
+        System.out.println("学生正在学习");
+    }
 }

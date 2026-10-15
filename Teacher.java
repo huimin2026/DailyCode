@@ -1,25 +1,12 @@
-package com.itheima.ooptest4;
+package com.itheima.oopextendstest1;
 
-public class Teacher {
+public class Teacher extends Person{
+    //子类特有的内容
+    //属性：学科
+    String subject;
 
-    //属性
-    String name;
-    int age;
-
-    //行为
-    //能干什么？方法的形式进行体现（不加static)
-    //授课
+    //行为：教书
     public void teach(){
-        System.out.println("老师正在授课");
-    }
-
-    //吃饭
-    public void eat(){
-        System.out.println("老师正在吃饭");
-    }
-
-    //睡觉
-    public void sleep(){
-        System.out.println("老师正在睡觉");
+        System.out.println("老师正在教书");
     }
 }

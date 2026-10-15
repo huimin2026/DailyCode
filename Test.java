@@ -1,31 +1,37 @@
-package com.itheima.toolclasstest;
+package com.itheima.oopextendstest1;
 
 public class Test {
     public static void main(String[] args) {
-        /*题目需求
+        /*
+        学生：
+            属性：姓名，年龄，年级
+            行为：吃饭，学习
+        老师：
+            属性：姓名，年龄，科目
+            行为：吃饭，讲课*/
 
-在实际开发中，经常会遇到一些数组使用的工具类。请按照如下要求编写一个数组的工具类完成以下需求：
+        //创建对象
+        Student s = new Student();
+        s.name = "小诗诗";
+        s.age = 18;
+        s.grade = "大一";
 
-1. 提供一个方法printArr，用于遍历数组。格式如下：[10, 20, 50, 34, 100]（只考虑整数数组）
+        System.out.println(s.name + " " + s.age + " " + s.grade);
 
-2. 提供一个方法getAverage，用于返回平均分。（只考虑整数数组）
+        s.eat();
+        s.studt();
 
-要求：写工具类，两个都是静态方法。
+        System.out.println("------------");
 
-• printArr(int[] arr)：打印数组，输出格式 [10, 20, 50, 34, 100]
+        //创建老师对象
+        Teacher t = new Teacher();
+        t.name = "张老师";
+        t.age = 30;
+        t.subject = "数学";
 
-• getAverage(int[] arr)：计算数组元素平均值，返回结果。*/
+        System.out.println(t.name + " " + t.age + " " + t.subject);
 
-        //创建一个数组
-        int[] arr = {10, 20, 50, 34, 100};
-        //遍历
-        ArrayUitl.printArr(arr);
-
-        //创建一个数组
-        int[] arr2 = {1,2,3,4,7};
-        //ctrl + alt +v 自动生成左边的接受变量
-        double avg = ArrayUitl.getAverage(arr2);
-        System.out.println(avg);
-
+        t.eat();
+        t.teach();
     }
 }
