@@ -1,37 +1,40 @@
-package com.itheima.oopextendstest1;
+package com.itheima.oopextendstest2;
 
 public class Test {
     public static void main(String[] args) {
-        /*
-        学生：
-            属性：姓名，年龄，年级
-            行为：吃饭，学习
-        老师：
-            属性：姓名，年龄，科目
-            行为：吃饭，讲课*/
+       /*现在有三个电子设备，请设计他们的继承结构
+1. 安卓手机
+属性：品牌，价格
+行为：打电话，发短信，nfc功能
+2. 苹果手机
+属性：品牌，价格
+行为：打电话，发短信
+3. 笔记本电脑
+属性：品牌，价格
+行为：编程*/
 
-        //创建对象
-        Student s = new Student();
-        s.name = "小诗诗";
-        s.age = 18;
-        s.grade = "大一";
+        //创建安卓手机的对象
+        Android a = new Android();
+        a.brand = "华为";
+        a.price = 5000;
+        System.out.println(a.brand+","+a.price);
+        a.NFC();
+        a.call();
+        a.sendMessage();
 
-        System.out.println(s.name + " " + s.age + " " + s.grade);
+        //创建苹果手机的对象
+        IOS i = new IOS();
+        i.brand = "苹果";
+        i.price = 6000;
+        System.out.println(i.brand+","+i.price);
+        i.call();
+        i.sendMessage();
 
-        s.eat();
-        s.studt();
-
-        System.out.println("------------");
-
-        //创建老师对象
-        Teacher t = new Teacher();
-        t.name = "张老师";
-        t.age = 30;
-        t.subject = "数学";
-
-        System.out.println(t.name + " " + t.age + " " + t.subject);
-
-        t.eat();
-        t.teach();
+        //创建笔记本电脑的对象
+        Laptop l = new Laptop();
+        l.brand = "戴尔";
+        l.price = 8000;
+        System.out.println(l.brand+","+l.price);
+        l.coding();
     }
 }
