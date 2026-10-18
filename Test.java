@@ -1,40 +1,35 @@
-package com.itheima.oopextendstest2;
+package com.itheima.oopextendstest4;
 
 public class Test {
     public static void main(String[] args) {
-       /*现在有三个电子设备，请设计他们的继承结构
-1. 安卓手机
-属性：品牌，价格
-行为：打电话，发短信，nfc功能
-2. 苹果手机
-属性：品牌，价格
-行为：打电话，发短信
-3. 笔记本电脑
-属性：品牌，价格
-行为：编程*/
+        /*练习：方法重写的练习（手机版本升级）
+背景：
+在手机的发展历史中，第一代手机功能比较单一，只能用来打电话，比如在电视中经常见到的大哥大。
+随着第二代数字移动通信系统（2G）的发展，手机体积逐渐变小，开始具备短信，彩信，基本功能。
+进入到21世纪，主要是2009年左右，智能手机开始普及。按照这个背景设计手机的Javabean类。
 
-        //创建安卓手机的对象
-        Android a = new Android();
-        a.brand = "华为";
-        a.price = 5000;
-        System.out.println(a.brand+","+a.price);
-        a.NFC();
-        a.call();
-        a.sendMessage();
+第一代手机：
+功能：打电话
 
-        //创建苹果手机的对象
-        IOS i = new IOS();
-        i.brand = "苹果";
-        i.price = 6000;
-        System.out.println(i.brand+","+i.price);
-        i.call();
-        i.sendMessage();
+第二代手机：
+功能：打电话，发短信
 
-        //创建笔记本电脑的对象
-        Laptop l = new Laptop();
-        l.brand = "戴尔";
-        l.price = 8000;
-        System.out.println(l.brand+","+l.price);
-        l.coding();
+第三代手机：
+功能：打电话升级为视频通话，发短信，玩游戏*/
+
+        //创建第一代手机的对象
+        FirstGenerationPhone phone1 = new FirstGenerationPhone();
+        phone1.call();
+
+        //创建第二代手机的对象
+        SecondGenerationPhone phone2 = new SecondGenerationPhone();
+        phone2.call();
+        phone2.sendMessge();
+
+        //创建第三代手机的对象
+        ThirdGenerationPhone phone3 = new ThirdGenerationPhone();
+        phone3.call();
+        phone3.sendMessge();
+        phone3.playGame();
     }
 }
