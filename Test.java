@@ -1,35 +1,38 @@
-package com.itheima.oopextendstest4;
+package com.itheima.oopextendstest5;
 
 public class Test {
     public static void main(String[] args) {
-        /*练习：方法重写的练习（手机版本升级）
-背景：
-在手机的发展历史中，第一代手机功能比较单一，只能用来打电话，比如在电视中经常见到的大哥大。
-随着第二代数字移动通信系统（2G）的发展，手机体积逐渐变小，开始具备短信，彩信，基本功能。
-进入到21世纪，主要是2009年左右，智能手机开始普及。按照这个背景设计手机的Javabean类。
+        /*方法重写的练习（计算商品价格）
+某电商项目售卖智能设备，智能设备包括：手机，笔记本电脑，平板
+1. 所有的智能设备有以下属性：商品名，商品价格
+行为：计算商品价格：
+• [0 ~ 1000) 元，不打折
+• [1000 ~ 5000) 元，9折
+• [5000 ~ 10000) 元，8折
+• 超出10000元，7折
+2. 手机享受额外补贴，在原有的基础上再打9折。
+3. 笔记本电脑和平板电脑不享受额外补贴。*/
 
-第一代手机：
-功能：打电话
+        //创建三个子类的对象，并查看计算结果
+        Phone p = new Phone();
+        p.name = "小米";
+        p.price = 4999;
 
-第二代手机：
-功能：打电话，发短信
+        double payment = p.payment();
+        System.out.println(payment);
 
-第三代手机：
-功能：打电话升级为视频通话，发短信，玩游戏*/
+        Laptop l = new Laptop();
+        l.name = "华为";
+        l.price = 5999;
 
-        //创建第一代手机的对象
-        FirstGenerationPhone phone1 = new FirstGenerationPhone();
-        phone1.call();
+        double payment2 = l.payment();
+        System.out.println(payment2);
 
-        //创建第二代手机的对象
-        SecondGenerationPhone phone2 = new SecondGenerationPhone();
-        phone2.call();
-        phone2.sendMessge();
+        PAD pad = new PAD();
+        pad.name = "小米";
+        pad.price = 3999;
 
-        //创建第三代手机的对象
-        ThirdGenerationPhone phone3 = new ThirdGenerationPhone();
-        phone3.call();
-        phone3.sendMessge();
-        phone3.playGame();
+        double payment3 = pad.payment();
+        System.out.println(payment3);
     }
 }
