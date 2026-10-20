@@ -1,17 +1,22 @@
-package com.itheima.oopextendstest6;
+package com.itheima.oopextendstest8;
 
 public class Teacher extends Person{
-    String subject;
+    private String subject;
 
-    //空参构造
-    public Teacher() {
-        System.out.println("Teacher的空参构造执行了~");
+    public Teacher(){
+
     }
-
-    //带参构造
-    public Teacher(String name, int age, String subject) {
-        super(name, age);
+    public Teacher(String name,int age,String subject){
+        super(name,age);
         this.subject = subject;
-        System.out.println("Teacher的带参构造执行了~");
+    }
+    public String getSubject(){
+        return subject;
+    }
+    public void setSubject(String subject){
+        this.subject = subject;
+    }
+    public void teach(){
+        System.out.println("老师正在教书");
     }
 }

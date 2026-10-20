@@ -1,19 +1,37 @@
-package com.itheima.oopextendstest6;
+package com.itheima.oopextendstest8;
 
 public class Person {
-    String name;
-    int age;
+    private String name;
+    private int age;
 
     //构造方法
+    //空参构造
     public Person(){
-        System.out.println("父类的空参构造执行了~");
-    }
 
-    public Person(String name, int age){
-        System.out.println("父类的带参构造执行了");
+    }
+    //带全部参数的构造
+    public Person(String name,int age){
         this.name = name;
         this.age = age;
     }
-
+    //get/set
+    public String getName(){
+        return name;
     }
-
+    public void setName(String name){
+        this.name = name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setAge(int age){
+        this.age = age;
+    }
+    //行为
+    public void sleep(){
+        System.out.println("睡觉");
+    }
+    public void eat(){
+        System.out.println("吃饭");
+    }
+}
