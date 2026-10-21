@@ -1,14 +1,17 @@
-package com.itheima.ooptest5;
+package com.itheima.oopextendstest9;
 
-public class Cook {
+public class Cook extends Employee{
+    //无参构造
+    public Cook(){
 
-    //属性
-    String name;
-    int age;
-    String cookLeve1;
-
-    //行为
-    public void cooking(){
-        System.out.println("正在烹饪");
+    }
+    //有参构造
+    public Cook(String id, String name, double salary){
+        super(id, name, salary);
+    }
+    //重写work方法：厨师的工作是炒菜
+    @Override
+    public void work(){
+        System.out.println("炒菜");
     }
 }
