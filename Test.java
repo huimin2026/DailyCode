@@ -1,26 +1,25 @@
-package com.itheima.oopextendstest9;
+package com.itheima.oopextendstest10;
 
 public class Test {
     public static void main(String[] args) {
-        /*1.经理
-        成员变量：工号，姓名，工资，管理奖金
-        成员方法：工作（管理其他人），吃饭（吃米饭）
-
-        2.厨师
-        成员变量：工号，姓名，工资
-        成员方法：工作（做饭），吃饭（吃米饭）*/
-
-        //创建经理对象：工号001，姓名张经理，工资8000，奖金2000
-        Manager m = new Manager("001", "张经理", 8000, 2000);
-        //调用经理的工作方法,吃饭方法（继承来的）
+        /*
+黑马程序员公司里有很多员工（Employee），按工作内容分为教研部员工(Teacher)和行政部员工(AdminStaff)：
+1. 教研部按教学方式，分为讲师(Lecturer)和助教(Tutor)
+2. 行政部按负责事项，分为维护专员(Maintainer)、采购专员(Buyer)
+3. 每个员工都有：编号、姓名、工作功能
+4. 每个员工都有work工作方法，但具体工作内容不一样
+要求：使用继承完成该需求。*/
+        //讲师
+        Lecturer l = new Lecturer("001", "张讲师");
+        l.work();
+        //助教
+        Tutor t = new Tutor("002", "张助教");
+        t.work();
+        //维护专员
+        Maintainer m = new Maintainer("003", "张维护专员");
         m.work();
-        m.eat();
-
-        //创建厨师对象：工号002，姓名张厨师，工资5000
-        Cook c = new Cook("002", "张厨师", 5000);
-        //调用厨师的工作方法
-        c.work();
-        //调用吃饭方法（继承来的）
-        c.eat();
+        //购买专员
+        Buyer b = new Buyer("004", "张购买专员");
+        b.work();
     }
 }
