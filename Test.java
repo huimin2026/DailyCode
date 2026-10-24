@@ -1,19 +1,25 @@
-package com.itheima.oopextendstest11;
+package com.itheima.oopextendstest12;
 
 public class Test {
-    public static void main(String[] args){
-        /*
-业务场景：餐厅菜品系统的继承体系构建
-1. 热菜
-属性：菜名、价格、口味、烹饪时间
-行为：菜品介绍（示例："热菜水煮鱼，价格88元，口味麻辣，烹饪时间20分钟，适合重口味食客"）
-2. 凉菜
-属性：菜名、价格、口味、保质期
-行为：菜品介绍（示例："凉菜拍黄瓜，价格10元，口味酸辣，保质期30分钟，适合所有食客"）*/
+    public static void main(String[] args) {
+        /*题目：继承的作业4（电商项目）
+业务场景：
+某电商平台需要管理商品，基础商品包含名称、价格
+行为：showInfo() 展示所有的属性
+要求子类按照要求，扩展特有属性
+1. 电子产品：
+增加品牌、型号
+行为：打印名称，价格，品牌，型号等所有属性
+2. 服装：
+增加尺寸、颜色
+行为：打印名称，价格，尺寸，颜色等所有属性*/
 
-        HotDish hd = new HotDish("水煮鱼", 88, "麻辣", 20);
-        hd.show();
-        ColdDish cd = new ColdDish("拍黄瓜", 10, "酸辣", 30);
-        cd.show();
+        //创建电子产品对象
+        Electronic e = new Electronic("华为", "Mate40", "手机", 5999);
+        e.showInfo(); // 调用电子产品对象的showInfo方法
+        //创建服装对象
+        Clothes c = new Clothes("M", "红色");
+        c.showInfo(); // 调用服装对象的showInfo方法
+
     }
 }
