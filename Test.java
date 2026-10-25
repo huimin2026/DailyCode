@@ -1,25 +1,32 @@
-package com.itheima.oopextendstest12;
+package com.itheima.oopextendstest13;
 
 public class Test {
     public static void main(String[] args) {
-        /*题目：继承的作业4（电商项目）
+
+    /*题目：继承的作业5（物流快递运费计算）
 业务场景：
-某电商平台需要管理商品，基础商品包含名称、价格
-行为：showInfo() 展示所有的属性
-要求子类按照要求，扩展特有属性
-1. 电子产品：
-增加品牌、型号
-行为：打印名称，价格，品牌，型号等所有属性
-2. 服装：
-增加尺寸、颜色
-行为：打印名称，价格，尺寸，颜色等所有属性*/
+快递公司需要计算运费，基础快递包含：单号String、重量int、收件人String
+行为：计算快递费（计算规则：每公斤10元，不需要考虑小数部分）
+有两个子类继承基础快递：
+1. 同城速递：重写计算快递费方法，在基础运费上加10元
+2. 异地空运：重写计算快递费方法，在基础运费上加15元*/
 
-        //创建电子产品对象
-        Electronic e = new Electronic("华为", "Mate40", "手机", 5999);
-        e.showInfo(); // 调用电子产品对象的showInfo方法
-        //创建服装对象
-        Clothes c = new Clothes("M", "红色");
-        c.showInfo(); // 调用服装对象的showInfo方法
+        //基础快递
+        Express e1 = new Express("001", 1, "张三" );
+        System.out.println(e1.calculateMoney());
 
+        //同城速递
+        SameCityExpress e2 = new SameCityExpress( );
+        e2.setId("K002");
+        e2.setWeight(2);
+        e2.setReceiver("李四");
+        System.out.println(e2.calculateMoney());
+
+        //异地空运
+        AirExpress e3 = new AirExpress();
+        e3.setId("A003");
+        e3.setWeight(3);
+        e3.setReceiver("王五");
+        System.out.println(e3.calculateMoney());
     }
 }
