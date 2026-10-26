@@ -1,29 +1,27 @@
-package com.itheima.oopextendstest8;
+package com.itheima.oopextendstest14;
 
 public class Student extends Person{
-    private String grade;
+        public Student(){
+            // 子类构造第一行默认隐藏super()，调用父类构造；父类构造不是继承过来的！
+            super();
+        }
 
-    //空参构造
-    public Student(){
+        public void testVisit(){
+            // name是public ✅ 继承，可以直接访问
+            name = "小明";
+            System.out.println(name);
 
-    }
+            // id是private ❌ 编译报错！子类不能直接访问
+            // id = "001";
 
-    //带全部参数构造方法（父 + 子）
-    public Student(String name,int age,String grade){
-        super(name,age);
-        this.grade = grade;
-    }
+            // secret()私有方法 ❌ 编译报错，不能直接调用
+            // secret();
 
-    //get/set
-    public String getGrade(){
-        return grade;
-    }
-    public void setGrade(String grade){
-        this.grade = grade;
-    }
+            // sayHello() public ✅ 继承，可以直接调用
+            sayHello();
 
-    //行为
-    public void study(){
-        System.out.println("学习");
+            // 如果想用私有id，只能通过父类提供的public方法间接操作
+            setId("001");
+            System.out.println(getId());
+        }
     }
-}
