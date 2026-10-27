@@ -1,29 +1,23 @@
-package com.itheima.oopextendstest14;
+package com.itheima.aaa;
 
 public class Person {
-    //private私有成员：子类【不能直接继承访问】，但是子类对象内存里存在这个数据的
-    private String id;
-    //public公开成员：子类可以继承、任意地方直接访问
-    public String name;
-    //static静态成员：属于类，子类可以访问，不算严格意义上的继承
-    public static String ation = "中国";
+    //4种权限修饰符的成员变量
+    private String name; //private 本类才能访问
+    int age; //默认（缺省）同包才能访问
+    protected String hobby; //protected 同包 + 不同包子类
+    public String id; //public 所有类都能访问
 
-    //父类构造方法：【不会被子类继承】，子类必须用super调用
-    public void secret(){
-
-        System.out.println("这是私有密码方法");
+    //4种权限修饰符的成员方法
+    private void show1(){
+        System.out.println("private方法show1");
     }
-    //公开方法：子类继承，可以直接调用，还可以用来间接拿private的值
-    public void sayHello(){
-        System.out.println("你好");
+    void show2(){
+        System.out.println("默认方法show2");
     }
-
-    //提供公开get方法，让子类间接访问私有id
-    public String getId(){
-        return id;
+    protected void show3(){
+        System.out.println("protected方法show3");
     }
-    //提供公开set方法，让子类间接修改private的id
-    public void setId(String id){
-        this.id = id;
+    public void show4(){
+        System.out.println("public方法show4");
     }
 }
