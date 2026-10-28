@@ -1,12 +1,16 @@
-package com.itheima.oopextendstest10;
+package com.itheima.test1;
 
-public class Teacher extends Employee{
-    //无参构造
+public class Teacher extends Person{
     public Teacher(){
 
     }
-    //有参构造
-    public Teacher(String id, String name){
-        super(id, name);
+
+    public Teacher(String name,String username,String password){
+        super(name, username, password);
+    }
+
+    @Override
+    public void work(){
+        System.out.println("老师的工作是教学~");
     }
 }

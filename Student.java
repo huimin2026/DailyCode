@@ -1,17 +1,16 @@
-package com.itheima.bbb;
-
-import com.itheima.aaa.Person;
+package com.itheima.test1;
 
 public class Student extends Person{
-    public void test(){
-        //System.out.println(name);
-        //System.out.println(age);
-        System.out.println(hobby);
-        System.out.println(id);
+    public Student(){
 
-        //show1();//private
-        //show2();//默认权限
-        show3(); //protected
-        show4(); //public
+    }
+
+    public Student(String name,String username,String password){
+        super(name, username, password);
+    }
+
+    @Override
+    public void work(){
+        System.out.println("学生的工作是学习~");
     }
 }
