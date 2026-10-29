@@ -1,30 +1,24 @@
-package com.itheima.test1;
+package com.itheima.test2;
 
 public class Test {
+    /*题目：
+    定义父类Animal，有成员变量name、方法show()；
+    定义子类Cat，继承自Animal，重写show()方法；
+    用多态写法Animal a = new Cat();    观察变量和方法的访问规则*/
+
     public static void main(String[] args) {
-        /*题目
-编写程序，包含三类角色：学生、老师、管理员
-共性属性：姓名、账号、密码
-各自行为 work：
-• 学生 work：工作是学习
-• 老师 work：工作是教书
-• 管理员 work：工作是管理网站
-学生管理系统，提供 register（注册）方法，可以注册所有角色。
-注册成功输出示例：
-姓名为张三的同学注册成功，账号zhangsan，密码123456
-提示：适合用父类 + 继承实现。*/
+       //多态写法：父类引用指向子类对象
+        //左边Animal：编译类型（看左边）
+        //右边new Cat():运行类型（看右边）
+        Animal a = new Cat();
 
-        //创建一个学生的对象
-        Student stu = new Student("张三","zhangsan","123456");
+        //多态访问成员变量：编译看左边，运行看左边
+        //会找父类Animal里面的name
+        System.out.println(a.name);
 
-        //创建学生管理系统的对象
-        StudentManger sm = new StudentManger();
-        //把stu注册到学生管理系统当中
-        sm.register(stu);
-
-        //创建一个老师的对象
-        Teacher t = new Teacher("张三","zhangsan","123456");
-        //把t注册到学生管理系统当中
-        sm.register(t);
+        //多态访问成员变量的方法：编译看左边，运行看右边
+        //找子类重写后的show方法
+        a.show();
     }
+
 }
