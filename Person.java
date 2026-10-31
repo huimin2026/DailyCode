@@ -1,55 +1,49 @@
-package com.itheima.test3;
+package com.itheima.test5;
 
 public class Person {
-    /*人Person：
-属性：名字，年龄，性别
-行为：行驶交通工具（能使用所有交通工具）*/
+    //属性：姓名、年龄
     private String name;
     private int age;
-    private String gender;
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public String getGender() {
-        return gender;
-    }
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
     public Person(){
 
     }
-
-    public Person(String name, int age, String gender){
+    public Person(String name, int age){
         this.name = name;
         this.age = age;
-        this.gender = gender;
+    }
+    //获取姓名
+    public String getName() {
+        return name;
+    }
+    //设置姓名
+    public void setName(String name) {
+        this.name = name;
+    }
+    //获取年龄
+    public int getAge() {
+        return age;
+    }
+    //设置年龄
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    //行为：行驶交通工具（能使用所有交通工具）
-    public void drive(Vehicle vehicle){
-        //表示当前的交通工具正在行驶
-        vehicle.move();
-        //响铃、鸣笛
-        //判断一下传递过来的是不是自行车
-        if(vehicle instanceof Bicycle){
-            Bicycle b = (Bicycle)vehicle;
-            b.ringBell();
-        }else if(vehicle instanceof Car){
-            Car c = (Car)vehicle;
-            c.honk();
-        }else{
-            System.out.println("没有这个交通工具");
+    //饲养动物方法：
+    public void KeepPet(Animal pet, String something){
+        System.out.println("饲养员：" + name + "开始喂动物");
+        //调用pet的eat方法
+        pet.eat(something);
+
+        //判断是狗，强转，调用lookHome方法
+        if(pet instanceof Dog){
+            Dog dog = (Dog)pet;
+            dog.lookHome();
+        }
+        //判断是猫，强转，调用catchMouse方法
+        else if(pet instanceof Cat){
+            Cat cat = (Cat)pet;
+            cat.catchMouse();
         }
     }
 }

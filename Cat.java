@@ -1,12 +1,21 @@
-package com.itheima.test2;
+package com.itheima.test5;
 
-public class Cat extends Animal{
-    //子类同名成员变量
-    String name = "小猫";
+public class Cat extends Animal {
+    //构造方法
+    public Cat() {
+    }
+    public Cat(String color, int age){
+        super(age,color);
+    }
 
-    //重写父类的show方法
+    //重写eat方法
     @Override
-    public void show(){
-        System.out.println("小猫的方法");
+    public void eat(String something) {
+        System.out.println(getAge() + "岁的" + getColor() + "的猫吃" + something);
+    }
+
+    //猫猫独有方法：逮老鼠
+    public void catchMouse(){
+        System.out.println("小猫逮老鼠！喵喵喵");
     }
 }
