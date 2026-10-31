@@ -1,39 +1,28 @@
-package com.itheima.finalTest;
+package com.itheima.test4;
 
-public class Circle {
-    //属性
-    private double radii;//半径
-    private final double PI = 3.14;//Π
+public class Circle extends Shape{
+    //圆周率常量，固定不变
+    private final double PI = 3.14159;
+    private double radius;//半径
 
-    //构造方法
-    public Circle(){
+    //构造方法：给半径赋值
+    public Circle(double radius) {
+        this.radius = radius;
     }
 
-    public Circle(double radii){
-        this.radii = radii;
-    }
-
-    //GET/SET
-    public double getPI() {
-        return PI;
-    }
-
-    public double getRadii() {
-        return radii;
-    }
-
-    public void setRadii(double radii) {
-        this.radii = radii;
-    }
-
-    //行为
-    //计算圆的面积
-    public double getArea(){
-        return PI * radii * radii;
-    }
-
-    //计算圆的周长
+    //重写周长方法
+    @Override
     public double getPerimeter(){
-        return 2 * PI * radii;
+        return 2*PI*radius;
+    }
+    //重写面积方法
+    @Override
+    public double getArea(){
+        return PI*radius*radius;
+    }
+
+    //获取半径
+    public double getRadius(){
+        return radius;
     }
 }
