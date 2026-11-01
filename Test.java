@@ -1,30 +1,24 @@
-package com.itheima.test5;
+package com.itheima.test6;
 
 public class Test {
-    public static void main(String[] args) {
-        /*
-1. 定义狗类
-属性：年龄，颜色
-行为：eat(String something)（something表示吃的东西）
-看家lookHome方法(无参数)
-2. 定义猫类
-属性：年龄，颜色
-行为：eat(String something)方法(something表示吃的东西)
-逮老鼠catchMouse方法(无参数)
-3. 定义Person饲养员类
-属性：姓名，年龄
-行为：饲养动物keepPet(Dog dog,String something)方法*/
+    public static void main(String[] args){
+        /*1. 父类：Phone，有call()方法，输出：手机可以打电话
 
-        //创建饲养员
-        Person person = new Person("张三", 20);
+2. 子类：HuaWei、XiaoMi，分别重写call()
 
-        //多态写法
-        Animal dog = new Dog("金毛", 2);
-        Animal cat = new Cat("橘色", 1);
+◦ HuaWei的call：华为手机高清通话
 
-        //喂狗，食物骨头
-        person.KeepPet(dog, "骨头");
-        //喂猫，食物鱼
-        person.KeepPet(cat, "鱼");
+◦ XiaoMi的call：小米手机极速通话
+
+3. 写一个Person类，里面有方法 usePhone(Phone p)，调用p.call()
+
+4. 测试类，用多态写法，让人分别使用两款手机*/
+
+        Phone p1 = new HuaWei();
+        Phone p2 = new XiaoMi();
+
+        Person person = new Person();
+        person.UsePhone(p1);
+        person.UsePhone(p2);
     }
 }
