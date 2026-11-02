@@ -1,22 +1,18 @@
-package com.itheima.test5;
+package com.itheima.test7;
 
-public class Dog extends Animal {
+public class Dog extends Animal{
 
-    //构造方法
     public Dog() {
-    }
-    public Dog(String color, int age){
-        super(age,color);
-    }
 
-    //重写eat方法
+    }
+    public Dog(String name, String color) {
+        super(name, color);
+    }
     @Override
-    public void eat(String something) {
-        System.out.println(getAge() + "岁的" + getColor() + "的狗吃" + something);
+    public void eat() {
+        System.out.println("狗吃骨头");
     }
-
-    //狗狗独有方法：看家
-    public void lookHome(){
-        System.out.println("小狗看家！汪汪汪");
+    public void watchHome() {
+        System.out.println("狗看家");
     }
 }
