@@ -1,7 +1,27 @@
-package com.itheima.test6;
+package com.itheima.a05interfacedemo5;
 
 public class Person {
-    public void UsePhone(Phone p){
-        p.call();
+    private String name;
+    private int age;
+
+    public Person(){
+
+    }
+    public Person(String name,int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setAge(int age){
+        this.age = age;
     }
 }
