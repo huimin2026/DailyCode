@@ -1,21 +1,15 @@
-package com.itheima.test1;
+package com.itheima.test2;
 
-public class Dog extends Animal implements Swim{
-
-    public Dog() {
-    }
-    public Dog(String name, String color) {
-        super(name, color);
+public class Dog implements Animal, Pet {
+    @Override
+    public void run() {
+        System.out.println("小狗撒欢跑");
     }
 
     @Override
-    public void eat() {
-        System.out.println("狗吃骨头");
-    }
-
-    @Override
-    public void swim() {
-        System.out.println("狗在狗刨");
-
+    public void drink() {
+        //二选一开启注释
+        Animal.super.drink();
+        //Pet.super.drink();
     }
 }

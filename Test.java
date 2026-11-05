@@ -1,25 +1,23 @@
-package com.itheima.a05interfacedemo5;
+package com.itheima.test2;
 
 public class Test {
-    /*乒乓球运动员：姓名，年龄  学打乒乓球 说英语
-      篮球运动员：姓名，年龄  学打篮球
-      乒乓球教练：姓名，年龄  教打乒乓球 说英语
-      篮球教练：姓名，年龄  教打篮球*/
     public static void main(String[] args) {
+        /*1. 定义接口 Animal
+• 抽象方法：void run();
+• JDK8 默认方法 default void drink()：输出「动物喝水」，内部调用接口私有实例方法
+• JDK8 静态方法 static void showTip()：输出「动物是生物」，内部调用接口私有静态方法
+• JDK9 私有实例方法 private void prepare()：输出「找到水源」，给 drink() 复用
+• JDK9 私有静态方法 private static void baseMsg()：输出「生命活动」，给 showTip() 复用
+2. 定义第二个接口 Pet
+• 默认方法 default void drink()：输出「宠物喝温水」
+3. 定义类 Dog，同时实现 Animal、Pet
+4. 测试类 TestDemo
+• 创建Dog对象，调用run()、drink()
+• 用接口名调用静态方法 showTip()*/
 
-        //创建运动员或教练对象
-        PingPangSporter pps = new PingPangSporter("张三", 18);
-        pps.study();
-        pps.speakEnglish();
-
-        BasketballSporter bbs = new BasketballSporter("李四", 20);
-        bbs.study();
-
-        BasketballCoach bc = new BasketballCoach("王五", 30);
-        bc.teach();
-
-        PingPangCoach pc = new PingPangCoach("赵六", 25);
-        pc.teach();
-        pc.speakEnglish();
+        Dog dog = new Dog();
+        dog.drink();
+        dog.run();
+        Animal.showTip();
     }
 }

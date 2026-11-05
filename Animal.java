@@ -1,25 +1,29 @@
-package com.itheima.test1;
+package com.itheima.test2;
 
-public abstract class Animal {
-    String name;
-    String color;
+public interface Animal {
+    //抽象方法
+    void run();
 
-    public Animal(){
-
+    //JDK8 默认方法
+    default void drink(){
+        prepare();
+        System.out.println("动物喝水");
     }
 
-    public Animal(String name, String color) {
-        this.name = name;
-        this.color = color;
+    //JDK8 静态方法
+    static void showTip(){
+        baseMsg();
+        System.out.println("动物是生物");
     }
 
-    public String getName() {
-        return name;
+    //JDK9 私有实例方法
+    private void prepare(){
+        System.out.println("找到水源");
     }
 
-    public String getColor() {
-        return color;
+    //JDK9 私有静态方法
+    private static void baseMsg(){
+        System.out.println("生命活动");
     }
 
-    public abstract void eat();
 }
