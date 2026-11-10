@@ -1,30 +1,32 @@
-package com.itheima.a01apidemo;
+package com.itheima.a01apidemo2;
 
-//导包：定义Random的位置
-//扩展：在什么情况下，我不需要导包？
-//     情况一：如果使用本包中的类
-//     情况二：如果使用java.lang包中的类
-//     其他情况都需要导包
-import java.util.Random;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        //需求：查询API帮助文档，使用Rand类中获取随机小数的方法
+        //1.创建Sanner对象，接收用户输入
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入字符串：");
+        String str = sc.nextLine();
 
-        //1.创建Random对象
-        Random r = new Random();
+        //1.判断是否包含java
+        if(str.contains("java")){
+            System.out.println("找到了java");
+        }
 
-        //2.调用方法获取一个随机的小数[0.0 - 1.0)
-        //0.0 ~ 0.9999999999999999999999...
-        double num1 = r.nextDouble();
-        System.out.println(num1);
+        //2.把所以java替换成Java
+        String newStr = str.replace("java", "Java");
+        System.out.println(newStr);
 
-        //[0.0 ~ 范围)JDK17才有的
-        double num2 = r.nextInt(10);
-        System.out.println(num2);
+        //3.截取索引2到6（包含2，不包含6）
+        String sub = newStr.substring(2,6);
+        System.out.println("截取[2,6)");
 
-        //3.调用方法获取一个随机的int值[0 ~ 范围)
-        int num3 = r.nextInt(10);
-        System.out.println(num3);
+        //4.StringBuilder反转
+        StringBuilder sb = new StringBuilder(newStr);
+        sb.reverse();
+        System.out.println("反转结果" + sb);
+
+        sc.close();
     }
 }
