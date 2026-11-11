@@ -1,32 +1,27 @@
-package com.itheima.a01apidemo2;
+package com.itheima.a01apidemo3;
 
 import java.util.Scanner;
 
 public class Test {
+    /*需求：
+    1.接收用户输入一段字符串
+    2.统计里面大写字母、小写字母、数字的数量
+    3.使用StringBuilder把原字符串反转
+    4.输出统计结果、反转后的字符串*/
+
     public static void main(String[] args) {
-        //1.创建Sanner对象，接收用户输入
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入字符串：");
+        System.out.println("请输入一段字符串：");
         String str = sc.nextLine();
 
-        //1.判断是否包含java
-        if(str.contains("java")){
-            System.out.println("找到了java");
-        }
-
-        //2.把所以java替换成Java
-        String newStr = str.replace("java", "Java");
-        System.out.println(newStr);
-
-        //3.截取索引2到6（包含2，不包含6）
-        String sub = newStr.substring(2,6);
-        System.out.println("截取[2,6)");
-
-        //4.StringBuilder反转
-        StringBuilder sb = new StringBuilder(newStr);
-        sb.reverse();
-        System.out.println("反转结果" + sb);
-
+        //调用统计方法
+        CharCount cc = new CharCount();
+        cc.count(str);
+        //调用反转方法
+        StringReverse sr = new StringReverse();
+        String reverseStr = sr.reverse(str);
+        System.out.println("反转后的字符串是：" + reverseStr);
         sc.close();
+
     }
 }
