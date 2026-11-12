@@ -1,32 +1,50 @@
-package com.itheima.a01apidemo05;
+package com.itheima.a01apidemo4;
 
 import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-       /*public char charAt(int index):根据索引返回字符
-         public int length():返回字符串中字符的个数
+       /*boolean equals方法（要比较的字符串）
+         boolean equalsIgnoreCase(要比较的字符串）
 
-         需求：键盘录入一个字符串，使用程序实现在控制台遍历该字符串*/
+         练习：
+           已知正确的用户名和密码，请用程序实现模拟用户登录
+           总共给三次机会，登入之后，给出相应的提示*/
 
-        //chatAt
-        String str = "你好你好123";
-        char c = str.charAt(3);
-        System.out.println(c);
+        //字符串比较的两个方法
+        //第一个方法：equals方法完全一致
+        /*String username = "zhangsan";
+        String rightUsername = "zhangsan";
+        boolean b1 = username.equals(rightUsername);*/
 
-        //length
-        int len = str.length();
-        System.out.println(len);
+        //1.已知正确的用户名和密码
+        String rightUsername = "zhangsan";
+        String rightPassword = "123456";
 
-        //键盘录入一个字符串，使用程序实现在控制台遍历该字符串
-        //1.键盘录入一个字符串
+        //2.让用户键盘录入登录的用户名和密码
         Scanner sc = new Scanner(System.in);
-        System.out.println("请输入一个字符串：");
-        String s = sc.next();
 
-        for(int i = 0;i<s.length();i++){
-            char cc = s.charAt(i);
-            System.out.println(cc);
+
+        //3.比较用户名和密码是否正确
+        for(int i= 1;i<=3;i++){
+            System.out.println("请输入用户名：");
+            String username = sc.next();
+            System.out.println("请输入密码：");
+            String password = sc.next();
+        boolean result = username.equals(rightUsername) && password.equals(rightPassword);
+        if(result == true){
+            System.out.println("登录成功！");
+            //跳出循环
+            break;
+        }else{
+            //如果登录失败，循环继续，总共有三次机会
+            if(i<=2){
+                System.out.println("登录失败,还剩下"+(3-i)+"次机会");
+            }else{
+                System.out.println("登录失败,账号" + username + "已锁定");
+            }
+
+        }
         }
     }
 }
