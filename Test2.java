@@ -1,47 +1,33 @@
-package test;
-
-import java.util.Random;
+package com.itheima.a01apidemo6;
 
 public class Test2 {
-    public static void main(String[] args) {
-        /*输入两个整数M、N，M代表红包的总额，N代表红包的个数。
-现在有N个人来抽红包，每个人都是随机的，打印每个人领的红包金额。
-要求：
+    public static void main(String[] args){
+        /*定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，
+        调用该方法，并在控制台输出结果
+        例如：
+        数组为int[] arr = {1,2,3};
+        执行方法后的输出结果为：[1,2,3]*/
 
-1. 每个人最少1分钱
+        //1.定义数组
+        int[] arr = {1,2,3};
 
-2. 每个人领完红包之后，至少预留 1 * N 分钱
+        //2.定义一个字符串用来拼接
+        //String str = "";//如果不知道字符串赋值什么，可以先赋值一个长度为0的字符串
 
-3. 最后一个人拿剩余的总额*/
-        //1.定义变量表示红包
-        int money = 20000;//分
+        String str = "[";
 
-        //2.定义变量表示红包的个数
-        int n = 5;
-
-        //判断红包的金额要足够
-        if(money < n){
-            System.out.println("红包金额不够");
-        }else{
-            //3.利用循环抽取红包
-            Random r = new Random();
-            for(int i =1; i < n; i++){
-                //利用Random进行随机抽取    1 2 3 4 表示当前是第几个人抽取
-                //                       4 3 2 1 表示最少预留的钱，单位分
-                //                       money - (n - i)
-                //                     第一个抽取红包：20000-（5-1）
-
-                //money - （n - i）：目的为了给后面的人预留至少一分钱
-                //+1：目前保证自己最少抽取一分钱
-                int myMoney = r.nextInt(money - (n - i)) + 1;
-
-                //从总额中减去当前抽到的钱
-                money = money - myMoney;
-
-                System.out.println("第" + i + "个人抽到的钱是：" + myMoney + "分");
+        //2.遍历数组
+        //第一次循环：i = 0："[" + 1 + "," = [1
+        //第二次循环：i = 1："[1," +2 +"," =[1,2
+        //第三次循环：i = 2： "[1,2," +3 + "," = [1,2,3
+        for(int i= 0;i<arr.length;i++){
+            if(i == arr.length - 1){
+                str = str + arr[i] + "[";
+            }else{
+                str = str + arr[i] +",";
             }
-            //4.输出最后一个人抽到的钱
-            System.out.println("第" + n + "个人抽到的钱是：" + money + "分");
         }
+        System.out.println(str);
+
     }
 }
