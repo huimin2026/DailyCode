@@ -1,33 +1,41 @@
-package com.itheima.a01apidemo6;
+package com.itheima.a01apidemo8;
+
+import java.util.Scanner;
 
 public class Test2 {
-    public static void main(String[] args){
-        /*定义一个方法，把int数组中的数据按照指定的格式拼接成一个字符串返回，
-        调用该方法，并在控制台输出结果
-        例如：
-        数组为int[] arr = {1,2,3};
-        执行方法后的输出结果为：[1,2,3]*/
+    public static void main(String[] args) {
+        /*需求：接收用户输入一段文字
+① 判断字符串是不是以 “黑马” 开头；
+② 如果包含 “Java”，把所有 “Java” 替换成 “Java 编程”；
+③ 截取从索引 2 到倒数第 2 的子串输出；
+④ 如果字符串首尾有空格，先去掉空格再做上面操作。*/
 
-        //1.定义数组
-        int[] arr = {1,2,3};
+        //创建扫描对象，接收键盘输入
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入一段文字：");
+        //获取输入内容
+        String str = sc.nextLine();
 
-        //2.定义一个字符串用来拼接
-        //String str = "";//如果不知道字符串赋值什么，可以先赋值一个长度为0的字符串
+        //trim:去除字符串首尾空格
+        str = str.trim();
 
-        String str = "[";
+        //startWith 判断字符串是否以“黑马”开头
+        boolean flag1 = str.startsWith("黑马");
+        System.out.println("字符串是否以“黑马”开头：" + flag1);
 
-        //2.遍历数组
-        //第一次循环：i = 0："[" + 1 + "," = [1
-        //第二次循环：i = 1："[1," +2 +"," =[1,2
-        //第三次循环：i = 2： "[1,2," +3 + "," = [1,2,3
-        for(int i= 0;i<arr.length;i++){
-            if(i == arr.length - 1){
-                str = str + arr[i] + "[";
-            }else{
-                str = str + arr[i] +",";
-            }
+        //contains 判断是否包含“Java”
+        if(str.contains("Java")){
+            //replace:替换所以匹配内容
+            str = str.replace("Java", "Java 编程");
         }
-        System.out.println(str);
 
+        //获取字符串最后一个字符的索引
+        int endIndex = str.length() - 1;
+        //substring(起始，结束）：左闭右开，截取索引 2 到倒数第二位
+        String subStr = str.substring(2, endIndex);
+        System.out.println("截取的子串是：" + subStr);
+
+        //关闭扫描器
+        sc.close();
     }
 }
