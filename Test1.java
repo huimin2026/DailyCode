@@ -1,40 +1,30 @@
-package com.itheima.a01strigbuilderdemo;
-
-import java.util.Scanner;
+package com.itheima.a02test;
 
 public class Test1 {
     public static void main(String[] args) {
-        /*题目：
-接收用户输入一句话，利用 StringBuilder：
-1. 如果句子以问号结尾 → 使用 reverse() 将整段文字反转；
-2. 如果不以问号结尾 → 在末尾追加 “～完成”；
-3. 最后把 StringBuilder 转成字符串输出；
-4. 判断最终字符串是否包含 “黑马”，打印提示。*/
+        /*定义一个方法，把 int 数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。
+例如：数组为 int[] arr = {1,2,3};
+执行方法后的输出结果为：[1, 2, 3]*/
 
-        //创建扫描仪
-        Scanner sc = new Scanner(System.in);
-        System.out.println("请输入一句话：");
-        String input = sc.nextLine();
+        //1.定义测试数组
+        int[] arr = {1,2,3};
+        //2.调用方法，接收返回值
+        String result = arrToString(arr);
+        System.out.println(result);
 
-        //使用输入字符串初始化 StringBuilder
-        StringBuilder sb = new StringBuilder(input);
-
-        //判断是否以问号结尾
-        if(input.endsWith("?")) {
-            sb.reverse();
-        }else{
-            sb.append("～完成");
+    }
+    public static String arrToString(int[] arr){
+        //1.创建StringBuilder对象
+        StringBuilder sb = new StringBuilder();
+        //2.遍历数组
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+            if(i != arr.length - 1){
+                sb.append(", ");
+            }
         }
+        //3.返回结果
+        return sb.toString();
 
-        //转为普通字符
-        String res = sb.toString();
-        System.out.println(res);
-
-        //判断最终字符串是否包含 “黑马”
-        if(res.contains("黑马")){
-            System.out.println("最终字符串包含 “黑马”");
-        }else{
-            System.out.println("最终字符串不包含 “黑马”");
-        }
     }
 }
