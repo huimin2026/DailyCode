@@ -1,61 +1,18 @@
-package test;
+package com.itheima.a02test;
 
 public class Test5 {
     public static void main(String[] args) {
-       /*题目
-给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+        /*定义两个字符串，记录为非负整数。输入字符串“12395”和“123”，求这两个超大数字相加的结果并输出；注意：数据过大，超过int取值范围，不能直接转数字相加，需要使用字符串来模拟加法运算。
+        */
 
-输入：height = [0,1,0,2,1,0,1,3,2,1,2,1]
-输出：6
-解释：下面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的高度图，在这种情况下，可以接 6 个单位的雨水（蓝色部分表示雨水）。*/
+        String str1 = "12395";
+        String str2 = "133";
 
-        //1.定义数组
-        int[] arr = {0,1,0,2,1,0,1,3,2,1,2,1};
+        int len =str1.length() > str2.length() ? str1.length() : str2.length();
+        int[] arr1 = CopyDataUtil.copyData(str1,len);
+        int[] arr2 = CopyDataUtil.copyData(str2,len);
 
-        //2.从左到右遍历，记录雨水 + 柱子的面积总和
-        //2.1定义数组记录从左到右看的数据
-        int[] leftMax = new int[arr.length];
-
-        //2.2定义第三方变量temp,记录当前最高的柱子
-        int temp = arr[0];
-
-        //2.3遍历数组
-        for(int i = 0;i<arr.length;i++){
-            //判断 temp 数组里面的数据
-            if(temp > arr[i]){
-                leftMax[i] = temp;
-            }else{
-                leftMax[i] = arr[i];
-                temp = arr[i];
-            }
-        }
-
-        //3.从左往右遍历，记录雨水 + 柱子的面积总和
-        int[] rightMax = new int[arr.length];
-        temp = arr[arr.length - 1];
-
-        for(int i = arr.length - 1;i >= 0;i--){
-            //判断 temp 数组里面的数据
-            if(temp > arr[i]){
-                rightMax[i] = temp;
-            }else{
-                rightMax[i] = arr[i];
-                temp = arr[i];
-            }
-        }
-
-        //5.求和
-        int sum = 0;
-        for(int i = 0;i<rightMax.length;i++){
-            sum = sum + rightMax[i];
-        }
-
-        //6.去掉柱子的面积
-        for(int i = 0;i<arr.length;i++){
-            sum = sum - arr[i];
-        }
-        System.out.println(sum);
+        int[] resultArr = AddUtil.add(arr1,arr2);
+        PrintUtil.printArr(resultArr);
     }
-
-
-    }
+}
