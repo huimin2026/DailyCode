@@ -1,30 +1,18 @@
-package com.itheima.a02test;
+package com.itheima.a03test;
 
 public class Test1 {
     public static void main(String[] args) {
-        /*定义一个方法，把 int 数组中的数据按照指定的格式拼接成一个字符串返回，调用该方法，并在控制台输出结果。
-例如：数组为 int[] arr = {1,2,3};
-执行方法后的输出结果为：[1, 2, 3]*/
-
-        //1.定义测试数组
-        int[] arr = {1,2,3};
-        //2.调用方法，接收返回值
-        String result = arrToString(arr);
-        System.out.println(result);
-
-    }
-    public static String arrToString(int[] arr){
-        //1.创建StringBuilder对象
-        StringBuilder sb = new StringBuilder();
-        //2.遍历数组
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]);
-            if(i != arr.length - 1){
-                sb.append(", ");
-            }
-        }
-        //3.返回结果
-        return sb.toString();
-
+        /*题目：数据脱敏（作业 1）
+要求：
+1. 把任意手机号中间四位变成 ****
+2. 保留邮箱名第一个字母，保留 @ 后面全部内容
+例子：
+• 13112345678 → 131****5678
+• zw1234@163.com → z****@163.com
+*/
+        String phone = "13112345678";
+        String email = "zw1234@163.com";
+        System.out.println(DataMaskUtil.maskPhone(phone));
+        System.out.println(DataMaskUtil.maskEmail(email));
     }
 }
