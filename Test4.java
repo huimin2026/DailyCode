@@ -1,33 +1,39 @@
-package com.itheima.a02test;
-
-import java.util.Random;
+package com.itheima.a03test;
 
 public class Test4 {
     public static void main(String[] args) {
-        /*定义一个任意的字符串，打乱里面的内容
-          “abcd"
-          "dcba"*/
+        /*题目：字符串获取信息（作业 4）
+身份证编码规则：
+• 第 1、2 位：省份
+• 第 3、4 位：城市
+• 第 5、6 位：区县
+• 第 7～14 位：出生年月日
+• 第 15、16 位：所在地派出所
+• 第 17 位：性别（奇数男，偶数女）
+• 第 18 位：个人信息码
+要求：
+假设有身份证：321104200801121234，获取出生年月日和性别并输出。
+输出样例：
+出生年月日：2008年01月12日
+性别为：男*/
 
-        //1.定义一个字符串
-        String str = "abcd";
+        //固定身份证串，也可以自己输入
+        String idCard = "321104200801121234";
 
-        //2.把字符串str变成字符数组
-        char[] arr = str.toCharArray();
+        //截取7~14位（下标从0开始
+        String birthStr = idCard.substring(6, 14);
+        String year = birthStr.substring(0,4);
+        String month = birthStr.substring(4,6);
+        String day = birthStr.substring(6,8);
 
-        //3.打乱字符数组arr中的内容
-        Random r = new Random();
+        //第17位、下标16
+        char sexChar = idCard.charAt(16);
+        int sexNum = sexChar - '0';
+        String sex = (sexNum % 2 == 0) ? "女" : "男";
 
-        for(int i = 0;i<arr.length;i++) {
-            //获取一个随机的索引
-            int index = r.nextInt(arr.length);
-            //把随机索引index位置的元素和i位置的元素进行交换
-            char temp = arr[i];
-            arr[i] = arr[index];
-            arr[index] = temp;
-        }
+        //输出结果
+        System.out.println("性别为：" + sex);
+        System.out.println("出生年月日：" + year + "年" + month + "月" + day + "日");
 
-        //4.打乱后的字符数组arr转换成字符串
-        String res = new String(arr);
-        System.out.println(res);
     }
 }
