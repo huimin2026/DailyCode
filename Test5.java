@@ -1,18 +1,49 @@
-package com.itheima.a02test;
+package com.itheima.a03test;
+
+import java.util.Scanner;
 
 public class Test5 {
     public static void main(String[] args) {
-        /*定义两个字符串，记录为非负整数。输入字符串“12395”和“123”，求这两个超大数字相加的结果并输出；注意：数据过大，超过int取值范围，不能直接转数字相加，需要使用字符串来模拟加法运算。
-        */
+        /*题目：字符串转换（作业 5）
+描述：
+将一个字符串中所有的整数前后加上符号 *，其他字符保持不变。连续的数字视为一个整数。
+数据范围：字符串长度满足 1< n< 100
+输入描述：
+输入一个字符串
+输出描述：
+字符串中所有出现的数字前后加上符号 *，其他字符保持不变
+示例：
+输入：Jkdi234klowe90a3
+输出：Jkdi*234*klowe*90*a*3*
+*/
 
-        String str1 = "12395";
-        String str2 = "133";
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        //用来拼结果
+        StringBuilder res = new StringBuilder();
+        //用来临时存一段连续数字
+        StringBuilder numBuf = new StringBuilder();
 
-        int len =str1.length() > str2.length() ? str1.length() : str2.length();
-        int[] arr1 = CopyDataUtil.copyData(str1,len);
-        int[] arr2 = CopyDataUtil.copyData(str2,len);
-
-        int[] resultArr = AddUtil.add(arr1,arr2);
-        PrintUtil.printArr(resultArr);
+        for(int i = 0;i<s.length();i++){
+            char ch = s.charAt(i);
+            //判断是不是数字
+            if(ch >='0' && ch <='9'){
+                numBuf.append(ch);
+            }else{
+                //如果缓存里面有数字，先打包加*
+                if(numBuf.length()>0){
+                    res.append("*").append(numBuf).append("*");
+                    numBuf.setLength(0);
+                }
+                //非数字直接放结果
+                res.append(ch);
+            }
+        }
+        //循环结束别忘了最后一段数字
+        if(numBuf.length()>0){
+            res.append("*").append(numBuf).append("*");
+        }
+        System.out.println(res);
+        sc.close();
     }
 }
