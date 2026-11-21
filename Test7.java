@@ -1,38 +1,19 @@
-package array;
+package com.itheima.a03test;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public class Test7 {
     public static void main(String[] args) {
-        /*生成10个0~100的随机数，放到数组里，10个数字不能重复*/
+        /*键盘输入两个字符串表示的非负整数，求它们的乘积。
+注意：需要考虑键盘录入的数据过大，超出 int 取值范围的情况。*/
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入第一个字符串：");
+        String s1 = sc.nextLine().trim();
+        System.out.println("请输入第二个字符串：");
+        String s2 = sc.nextLine().trim();
 
-        //1.创建数组，准备存10个不重复数字
-        int[] arr = new int[10];
-        Random r = new Random();
-
-        //2.生成随机数，存不重复的值
-        for(int i = 0;i<arr.length;){
-            //这里删掉i++！只有存入成功才i++
-            int num = r.nextInt(101);
-            //0~100
-            //检查：数组里面有没有num
-            int count = 0;
-            for(int j = 0;j<arr.length; j++){
-                if(num == arr[j]){
-                    count++;
-                    break;
-                    //找到重复，停止比对
-                }
-            }
-            //count=0代表没有重复，可以存入
-            if(count == 0){
-                arr[i] = num;
-                i++;
-            }
-        }
-        //3.遍历打印最终数组
-        for(int i = 0;i<arr.length;i++){
-            System.out.print(arr[i] + " ");
-        }
+        String result = BigMultiply.multiply(s1,s2);
+        System.out.println("乘积为：" + result);
+        sc.close();
     }
 }
