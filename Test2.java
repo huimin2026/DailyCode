@@ -1,44 +1,46 @@
-package com.itheima.a03test;
+package com.itheima.a04test;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Test2 {
     public static void main(String[] args) {
-        /*题目：计算某个字符出现的次数（作业 2）
-描述：
-写一个程序，接受一个由字母、数字和空格组成的字符串，和一个字符，然后输出输入字符串中该字符的出现次数。（不区分大小写字母）
-数据范围：1< n<1000
-输入描述：
-第一行输入一个由字母、数字和空格组成的字符串，第二行输入一个字符（保证该字符不为空格）。
-输出描述：
-输出输入字符串中含有该字符的个数。（不区分大小写字母）
-示例：
-输入
-ABCabc
-A
-输出
-2
-思路：循环判断；字母大小写 ASCII 差 32，用来忽略大小写。*/
+        /*题目
+需求：定义一个集合，添加一些学生对象。学生类属性：id、姓名、年龄。
+要求：
+1. 遍历集合，将所有学生的属性打印在控制台上，每个学生一行。
+2. 定义一个方法，根据 id 查找学生的信息。存在返回索引；不存在返回 -1。*/
 
-        Scanner sc = new Scanner(System.in);
-        //读整行字符串（含空格）
-        String str = sc.nextLine();
-        //读目标字符
-        char key = sc.nextLine().charAt(0);
+        //1.创建集合对象
+        ArrayList<Student>list = new ArrayList<>();
 
-        int count = 0;
-        //转成统一大小写比较
-        char keyUp = Character.toUpperCase(key);
+        //2.创建一些学生对象
+        Student s1 = new Student("001", "张三", 18);
+        Student s2 = new Student("002", "李四", 19);
+        Student s3 = new Student("003", "王五", 20);
 
-        for(int i = 0;i<str.length();i++){
-            char c = str.charAt(i);
-            char cUp = Character.toUpperCase(c);
-            if(cUp == keyUp){
-                count++;
-            }
+        //3.添加到集合
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+
+        //4.遍历集合，将所有学生的属性打印在控制台上，每个学生一行。
+        for(int i = 0;i<list.size();i++){
+            Student stu = list.get(i);
+            System.out.println(stu.getId() + "\t" + stu.getName() + "\t" + stu.getAge());
         }
 
-        System.out.println(count);
-        sc.close();
+        //5.查找对应的id
+        int index = findStudent(list, "002");
+        System.out.println(index);
+
+    }
+    public static int findStudent(ArrayList<Student> list, String id){
+        for(int i = 0; i < list.size(); i++){
+            Student stu = list.get(i);
+            if(stu.getId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
     }
 }
