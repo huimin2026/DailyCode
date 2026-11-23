@@ -1,34 +1,83 @@
-package com.itheima.a03test;
+package com.itheima.a04test;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Test3 {
     public static void main(String[] args) {
-        /*题目：字符串转换（作业 3）｜最后一个单词的长度
-描述：
-给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中最后一个单词的长度。
-单词是指仅由字母组成、不包含任何空格字符的最大子字符串。
-示例：
-1. 输入：s = "Hello World"｜输出：5
-2. 输入：s = " fly me to the moon "｜输出：4
-3. 输入：s = "luffy is still joyboy"｜输出：6*/
+        /*需求：
+做一个水果货架程序
+1. 定义水果类 Fruit，属性：水果编号、水果名字、价格
+2. 用 ArrayList 存水果对象
+3. 实现4个功能：
+① 打印货架上所有水果
+② 根据编号找水果，找到返回下标，找不到返回-1
+③ 根据编号删除这个水果
+④ 根据编号修改水果价格
+*/
+
+        //1.创建集合，用来放水果
+        ArrayList<Fruit> fruitList = new ArrayList<>();
+        //添加水果
+        fruitList.add(new Fruit("001", "苹果", 10.0));
+        fruitList.add(new Fruit("002", "香蕉", 5.0));
+        fruitList.add(new Fruit("003", "橘子", 8.0));
 
         Scanner sc = new Scanner(System.in);
-        //读整行，包含空格
-        String s = sc.nextLine();
 
-        //去掉首尾空格
-        s = s.trim();
-        //找最后一个空格位置
-        int lastSpace = s.lastIndexOf(' ');
+        //打印全部水果
+        System.out.println("货架上所有水果：");
+        printFruit(fruitList);
 
-        //如果没有空格，直接返回整个串长度；否则取后面一段
-        if(lastSpace == -1){
-            System.out.println(s.length());
-        }else{
-            String lastWord = s.substring(lastSpace + 1);
-            System.out.println(lastWord.length());
+        //查找水果
+        System.out.println("请输入要查找的水果编号：");
+        String findId = sc.next();
+        int index = findFruitById(fruitList, findId);
+        if (index != -1) {
+            System.out.println("找到水果：" + fruitList.get(index));
+        } else {
+            System.out.println("没有找到该编号的水果");
         }
-        sc.close();
+
+        //删除水果
+        System.out.println("请输入要删除的水果编号：");
+        String delId = sc.next();
+        int delIndex = findFruitById(fruitList, delId);
+        if (delIndex != -1) {
+            fruitList.remove(delIndex);
+            System.out.println("删除成功");
+        } else {
+            System.out.println("没有找到该编号的水果，删除失败");
+        }
+
+        //修改水果价格
+        System.out.println("请输入要修改的水果编号：");
+        String updateId = sc.next();
+        int updateIndex = findFruitById(fruitList, updateId);
+        if (updateIndex != -1) {
+            System.out.println("请输入新的价格：");
+            double newPrice = sc.nextDouble();
+            fruitList.get(updateIndex).setPrice(newPrice);
+            System.out.println("修改成功");
+        } else {
+            System.out.println("没有找到该编号的水果，修改失败");
+        }
+        System.out.println("修改后的水果列表：");
+        printFruit(fruitList);
+    }
+    //打印所有水果
+    public static void printFruit(ArrayList<Fruit> fruitList) {
+        for (int i = 0; i < fruitList.size(); i++) {
+            System.out.println(fruitList.get(i));
+        }
+    }
+    //根据编号找水果
+    public static int findFruitById(ArrayList<Fruit> fruitList, String id) {
+        for (int i = 0; i < fruitList.size(); i++) {
+            if (fruitList.get(i).getId().equals(id)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
