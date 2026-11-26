@@ -87,6 +87,19 @@ public class Login {
                 System.out.println("密码长度不符合要求，必须是3~8之间");
                 continue;
             }
+            //只能是字母加数字的组合，不能有其他字母
+            if(!checkPassword(password1)){
+                System.out.println("密码只能是字母加数字组合，不能有其他字母");
+                continue;
+            }
+            //校验两次密码输入是否一致
+            if(!password1.equals(password2)){
+                System.out.println("两次密码输入不一样，请重新输入~");
+                continue;
+            }
+            //把密码设置到对象当中
+            u.setPassword(password1);
+            break;
         }
     }
 
@@ -124,26 +137,16 @@ public class Login {
 
     //校验用户名是否符合要求
     public boolean checkUsername(String username) {
-        int charCount = 0;
-        int numCount = 0;
-        int otherCount = 0;
 
-        for (int i = 0; i < username.length(); i++) {
-            char c = username.charAt(i);
-            if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
-                charCount++;
-            } else if (c >= '0' && c <= '9') {
-                numCount++;
-            } else {
-                otherCount++;
-            }
-        }
         //判断：不能有别的符号，并且至少包含字母
-        if(otherCount == 0 && charCount>0){
-            return  true;
-        }else{
-            return false;
-        }
+        int[] arr = getCount(username);
+        return  arr[0]> 0&&arr[1]>=0&&arr[2]==0;
+    }
+
+    //作用：校验密码是否符合要求
+    public boolean checkPassword(String password){
+        int[] arr = getCount(password);
+        return  arr[0]> 0&&arr[1]>0&&arr[2]==0;
     }
 
 
