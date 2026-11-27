@@ -4,6 +4,7 @@ import com.itheima.domain.User;
 
 import java.lang.classfile.instruction.SwitchCase;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Login {
@@ -154,4 +155,46 @@ public class Login {
         public boolean checkLen ( int minLen, int maxLen, String str){
             return str.length() >= minLen && str.length() <= maxLen;
         }
+
+        //获取验证码
+    public static String getCode(){
+        //验证码
+
+        //1.把所有的大小写字母都放到一个容器
+        ArrayList<Character> list = new ArrayList<>();
+        for(int i = 0;i<26;i++){
+            list.add((char)('a'+i));
+            list.add((char)('A'+i));
+        }
+
+        //2.从集合当中随机抽取字母（4次）
+        StringBuilder sb = new StringBuilder();
+        Random r = new Random();
+        for(int i = 0;i<4 ;i++){
+            //随机获取集合中的索引
+            int index = r.nextInt(list.size());
+            char c = list.get(index);
+            sb.append(c);
+        }
+
+        //3.生成一个随机的数字（0~9）
+        sb.append(r.nextInt(10));
+
+        //4.数字的位置可以是任意的
+        //先把sb变成字符串，调用toCharArray方法，变成字符数组
+        char[] arr = sb.toString().toCharArray();
+        //把最大索引上的数据，跟一个的索引进行交换
+        int i = r.nextInt(arr.length);
+        //交换
+        //最大索引：arr.length-1
+        //随机索引：i
+        char temp = arr[i];
+        arr[i] = arr[arr.length-1];
+        arr[arr.length-1] = temp;
+
+        //5.把字符数组中的数据，变回字符串
+        String code = new String(arr);
+
+        return code;
+    }
     }
